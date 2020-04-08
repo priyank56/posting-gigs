@@ -1,0 +1,34 @@
+<section id="add" class="container">
+    <div class="form-wrap">
+        <h1>Forget Password</h1>
+
+        {{#each errors}}
+        <div class="error">
+            <p>{{this}}</p>
+        </div>
+        {{/each}}
+
+        <form action="/profile/forget" method="POST">
+           
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="input-box" placeholder="Enter an email"
+                    value="{{email}}">
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Old Password</label>
+                <input type="password" name="password" id="password" class="input-box"
+                    placeholder="Enter Your Old Password" maxlength="100">
+            </div>
+         
+            <div class="input-group">
+                <label for="new_password">New Password</label>
+                <input type="new_password" name="new_password" id="new_password" class="input-box"
+                    placeholder="Enter Your New Password (Use Combinations)" maxlength="100">
+            </div>
+
+            <input type="submit" value="Save Password" class="btn btn-reverse">
+        </form>
+    </div>
+</section>

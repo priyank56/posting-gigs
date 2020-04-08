@@ -238,4 +238,50 @@ router.get("/remove", (req, res) => {
     })
     .catch(err => console.log(err));
 });
+
+router.get('/forget',(req,res)=>{
+  res.render('forget');
+});
+
+router.post('/forget',(req,res)=>{
+  let {email,password,new_password}=req.body;
+  let errors=[];
+  if(!email){
+    errors.push('Enter Email Address');
+  }
+  if(!password){
+    errors.push('Enter Old Password');
+  }
+  if(!new_password){
+    errors.push('Enter New Password');
+  }
+  if(errors.length>0){
+    res.render('forget',{email,errors})
+  }else{
+    User.findOne({
+      where:{
+        email,
+        password
+      }
+    }).then(user=>{
+      if(user!=null){
+        User.update(
+          {
+            password:new_password
+          },
+          {
+            where:{
+              email
+            }
+        }).then(user=>{
+          res.render('login',{email});
+        })
+      }else{
+        errors.push('Wrong Email and Password Combination');
+        res.render('forget',{email,errors})
+      }
+    })
+  }
+});
+
 module.exports = router;
