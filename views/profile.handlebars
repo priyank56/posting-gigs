@@ -1,0 +1,37 @@
+<section>
+    <div class="pimage">
+        <img src="{{data.imgUrl}}" alt="profile" width="250px">
+    </div>
+    <div class="pcontent">
+        <span style="float: right;"><a href="/profile/logout" style="background-color: rgb(255, 218, 218); color:rgb(255, 0, 0);font-weight: 600; font-size: 12px; margin: 10px; padding: 5px; border-radius: 4px;">Logout</a></span>
+        <h1 style=" text-transform: uppercase;">{{data.user_name}}</h1>
+        <span style="float: right;"><a href="/profile/update?uid={{data.uid}}" style="background-color: rgb(255, 218, 218); color:rgb(255, 0, 0);font-weight: 600; font-size: 12px; margin: 10px; padding: 5px; border-radius: 4px;">Edit Profile</a></span>
+        <small style="float:left;font-weight: 600;letter-spacing: 2px; text-transform: capitalize; ">{{data.designation}}</small>
+        <span style="float: right;"><a href="/profile/remove?uid={{data.uid}}" style="background-color: rgb(216, 216, 216); color:rgb(0, 0, 0);font-weight: 600; font-size: 12px; margin: 10px; padding: 5px; border-radius: 4px;">Remove Account</a></span>        
+        <br>
+        <hr>
+        {{#if gigs}}
+        <h3 style="font-family:'Lucida Sans', sans-serif;">All Gigs</h3>
+        <table>
+            <thead style="text-align:center;margin:10px; font-family: 'Lucida Sans',sans-serif;">
+                <th>#</th>
+                <th>Gig Name</th>
+                <th>Budget</th>
+                <th>Technologies</th>
+            </thead>    
+            <tbody>
+                {{#each gigs}}
+                    <tr>
+                        <td><a href="/gigs/search?term={{dataValues.title}}" style="background-color: rgb(218, 232, 255); color:rgb(18, 150, 238);font-weight: 600; font-size: 12px; margin: 10px; padding: 5px; border-radius: 4px;">Explore</a></td>
+                        <td>{{dataValues.title}}</td>
+                        <td>{{dataValues.budget}}</td>
+                        <td>{{dataValues.technologies}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>Lets Start To Posting Gigs</p>
+        {{/if}}
+    </div>
+</section>

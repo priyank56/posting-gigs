@@ -1,0 +1,26 @@
+<section id="add" class="container">
+    <div class="form-wrap">
+        <h1>Welcome back</h1>
+
+        {{#each errors}}
+        <div class="error">
+            <p>{{this}}</p>
+        </div>
+        {{/each}}
+
+        <form action="/profile/login" method="POST">
+            <div class="input-group">
+                <label for="budget">Email</label>
+                <input type="email" name="email" id="contactemail" class="input-box"
+                    placeholder="Enter an email" value="{{email}}">
+            </div>
+            <div class="input-group">
+                <label for="Password">Password</label>
+                <input type="password" name="password" id="password" class="input-box"
+                    placeholder="Enter Your Password">
+            </div>
+            <input type="submit" value="Sign Up" class="btn btn-reverse">
+            <a href="/profile/register">Dont Have Account?</a>
+        </form>
+    </div>
+</section>

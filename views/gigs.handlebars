@@ -1,0 +1,27 @@
+<section id="gigs" class="container">
+    <h1>All Gigs</h1>
+    {{!-- {{#if gig}}Gigs Removed Successfully !!!{{id}}{{/if}} --}}
+    {{#each gigs}}
+
+    <div class="gig">
+        <h3 style="text-transform: capitalize;">{{dataValues.title}}</h3>
+        <p>{{dataValues.description}}</p>
+        <ul>
+            <li>Budget: {{dataValues.budget}}</li>
+            <li><a href="mailto:{{dataValues.contact_email}}" class="btn btn-reverse">Apply Now</a></li>
+        </ul>
+        <div class="tech">
+            <small>Created At: <span>{{dataValues.createdAt}}</span></small>
+            <small>Technologies Needed: <span>{{dataValues.technologies}}</span></small>
+            <span class="float-right"><a href="/gigs/update?gigid={{dataValues.id}}" class="btn-reverse">Update Gig</a></span>
+            <span class="float-right"><a href="/gigs/delete?gigid={{dataValues.id}}" class="btn-danger">Delete</a></span>
+        </div>
+    </div>
+
+    {{else}}
+
+    <p>No gigs Available</p>
+
+    {{/each}}
+
+</section>
